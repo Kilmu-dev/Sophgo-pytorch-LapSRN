@@ -128,11 +128,14 @@ def train(training_data_loader, optimizer, model, criterion, epoch):
 def save_checkpoint(model, epoch):
     model_folder = "checkpoint/"
     model_out_path = model_folder + "lapsrn_model_epoch_{}.pth".format(epoch)
-    state = {"epoch": epoch ,"model": model}
+    # state = {"epoch": epoch ,"model": model}
     if not os.path.exists(model_folder):
         os.makedirs(model_folder)
 
-    torch.save(state, model_out_path)
+    # torch.save(state, model_out_path)
+
+    #保存整个模型，包括模型结构+模型参数
+    torch.save(model, model_out_path)
 
     print("Checkpoint saved to {}".format(model_out_path))
 
